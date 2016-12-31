@@ -2,7 +2,7 @@
 
 # Discourse Twitch Onebox
 
-This plugin for Discourse extends Onebox to add support for properly embedding [Twitch](https://twitch.tv/) streams and videos in Discourse posts.
+This plugin for Discourse extends Onebox to add support for properly embedding [Twitch](https://twitch.tv/) streams and videos in Discourse posts. Videos embed as protocol-relative and with auto-play disabled.
 
 ## Demo
 
