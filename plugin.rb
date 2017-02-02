@@ -1,6 +1,6 @@
 # name: Discourse Twitch Onebox
-# about: Adds support for properly embedding Twitch streams and videos within Discourse.
-# version: 0.1
+# about: Adds support for properly embedding Twitch streams, videos, and Clips within Discourse.
+# version: 1.0
 # authors: Daniel Marquard
 # url: https://github.com/critcola/discourse-twitch-onebox
 
@@ -33,5 +33,25 @@ class Onebox::Engine::TwitchVideoOnebox
 	
 	def to_html
 		"<iframe src=\"//player.twitch.tv/?video=v#{id}&autoplay=false\" width=\"620\" height=\"378\" frameborder=\"0\" style=\"overflow: hidden;\" scrolling=\"no\" allowfullscreen=\"allowfullscreen\"></iframe>"
+	end
+end
+
+# Onebox for Twitch Clips.
+class Onebox::Engine::TwitchClipsOnebox
+	include Onebox::Engine
+
+	REGEX = /^https?:\/\/clips.twitch.tv\/([a-zA-Z0-9_]{4,25})\/([^#\?\/]+)/
+	matches_regexp REGEX
+
+	def channel
+		@url.match(REGEX)[1]
+	end
+	
+	def clip_name
+		@url.match(REGEX)[2]
+	end
+	
+	def to_html
+		"<iframe src=\"//clips.twitch.tv/embed?clip=#{channel}/#{clip_name}&autoplay=false\" width=\"620\" height=\"378\" frameborder=\"0\" style=\"overflow: hidden;\" scrolling=\"no\" allowfullscreen=\"allowfullscreen\"></iframe>"
 	end
 end
