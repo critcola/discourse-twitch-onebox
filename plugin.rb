@@ -8,7 +8,7 @@
 class Onebox::Engine::TwitchStreamOnebox
 	include Onebox::Engine
 
-	REGEX = /^https?:\/\/(?:www\.)?twitch.tv\/(?!directory)([a-zA-Z0-9_]{4,25})$/
+	REGEX = /^https?:\/\/(?:www\.)?twitch\.tv\/(?!directory)([a-zA-Z0-9_]{4,25})$/
 	matches_regexp REGEX
 
 	def channel
@@ -24,7 +24,7 @@ end
 class Onebox::Engine::TwitchVideoOnebox
 	include Onebox::Engine
 
-	REGEX = /^https?:\/\/(?:www\.)?twitch.tv\/(?!directory)[a-zA-Z0-9_]{4,25}\/v\/(\w+)/
+	REGEX = /^https?:\/\/(?:www\.)?twitch\.tv\/(?!directory)[a-zA-Z0-9_]{4,25}\/v\/(\w+)/
 	matches_regexp REGEX
 
 	def id
@@ -40,7 +40,7 @@ end
 class Onebox::Engine::TwitchClipsOnebox
 	include Onebox::Engine
 
-	REGEX = /^https?:\/\/clips.twitch.tv\/([a-zA-Z0-9_]{4,25})\/([^#\?\/]+)/
+	REGEX = /^https?:\/\/clips\.twitch\.tv\/([a-zA-Z0-9_]+)\/([^#\?\/]+)/
 	matches_regexp REGEX
 
 	def channel
