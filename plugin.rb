@@ -40,18 +40,14 @@ end
 class Onebox::Engine::TwitchClipsOnebox
 	include Onebox::Engine
 
-	REGEX = /^https?:\/\/clips\.twitch\.tv\/([a-zA-Z0-9_]+)\/([^#\?\/]+)/
+	REGEX = /^https?:\/\/clips\.twitch\.tv\/([a-zA-Z0-9_]+\/?[^#\?\/]+)/
 	matches_regexp REGEX
 
-	def channel
+	def clip_path
 		@url.match(REGEX)[1]
 	end
 	
-	def clip_name
-		@url.match(REGEX)[2]
-	end
-	
 	def to_html
-		"<iframe src=\"//clips.twitch.tv/embed?clip=#{channel}/#{clip_name}&autoplay=false\" width=\"620\" height=\"378\" frameborder=\"0\" style=\"overflow: hidden;\" scrolling=\"no\" allowfullscreen=\"allowfullscreen\"></iframe>"
+		"<iframe src=\"//clips.twitch.tv/embed?clip=#{clip_path}&autoplay=false\" width=\"620\" height=\"378\" frameborder=\"0\" style=\"overflow: hidden;\" scrolling=\"no\" allowfullscreen=\"allowfullscreen\"></iframe>"
 	end
 end
